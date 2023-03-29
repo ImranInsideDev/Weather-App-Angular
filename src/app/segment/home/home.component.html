@@ -1,0 +1,43 @@
+<div>
+  <label class="city-name">{{currentSearchWeather.location}}</label>
+</div>
+<div class="align-fav" (click)="favouriteFun(!currentSearchWeather.favourity)">
+  <img *ngIf="!currentSearchWeather.favourity" class="img"  src="assets/Icons/icon_favourite_Deactive.png">
+  <img *ngIf="currentSearchWeather.favourity"  class="img"  src="assets/Icons/icon_favourite_Active.png">
+  <span style="padding-left: 10px;">  <label class="favourity" [ngClass]="currentSearchWeather.favourity?'favourity fav-color': 'favourity'"> Add to favourite </label> </span>
+</div>
+
+<div style="text-align: -webkit-center;">
+  <div>
+    <img [src]=currentSearchWeather.logo>
+  </div>
+  <div> 
+    <span class="numeric">{{currentSearchWeather[this.currentSearchWeather.currentDegree]}}</span>
+    <span (click)="changeCelFare('celcius')" [ngClass]="currentSearchWeather.currentDegree == 'celcius'?'selected-degree':'un-selected-degree'">°C </span>
+    <span (click)="changeCelFare('farenheit')" [ngClass]="currentSearchWeather.currentDegree == 'farenheit'?'selected-degree':'un-selected-degree'">°F </span>
+  </div>
+  <div class="weather-text"> {{currentSearchWeather.weather}} </div>
+</div>
+
+<div class="border-footer">
+  <div class="row">
+    <div class="column" *ngFor="let bott of currentSearchWeather.bottomView, let index">
+      <span class="flex-container" >
+        <img [src]="bott[0]"> 
+        <span class="padd-color">
+          <span>{{bott[1]}}</span> <br>
+          <span class="size-increace">{{bott[2]}}</span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <!-- <span  *ngFor="let bott of currentSearchWeather.bottomView, let index">
+    <span class="flex-container">
+      <img [src]="bott[0]"> 
+      <span class="padd-color">
+        <span>{{bott[1]}}</span> <br>
+        <span class="size-increace">{{bott[2]}}</span>
+      </span>
+    </span>
+  </span> -->
+</div>

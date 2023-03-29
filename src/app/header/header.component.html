@@ -1,0 +1,34 @@
+<header class="header-space">
+    <div class="row">
+        <div class="column">
+            <img src="assets/Logos/logo_web.png">
+        </div>
+        <div class="column">
+            <input class="rectangle" type="text" (keyup.enter)="getSerachLocationWeather($event)"
+                placeholder="Search city (press 'Enter' after type)">
+        </div>
+    </div>
+</header>
+
+<div class="horizondal-space">
+    <nav class="menu">
+        <ul class="menu-list">
+            <li (click)="selectLabel('HOME')" class="menu-item" [ngClass]="selected == 'HOME'? 'active': ''">
+                <label class="pointer-hand">HOME</label></li>
+            <li (click)="selectLabel('FAVOURITE')" class="menu-item" [ngClass]="selected == 'FAVOURITE'? 'active': ''">
+                <label class="pointer-hand">FAVOURITE</label>
+            <li>
+            <li (click)="selectLabel('RECENT SEARCH')" class="menu-item"
+                [ngClass]="selected == 'RECENT SEARCH'? 'active': ''"><label class="pointer-hand">RECENT SEARCH</label></li>
+            <li class="menu-item right-position">
+                <label > {{currentSearchWeather.date}}</label>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div>
+    <app-home [currentSearchWeather]="currentSearchWeather" *ngIf="selected == 'HOME'"></app-home>
+    <app-favourite [searchTerm]="searchTerm" *ngIf="selected == 'FAVOURITE'"></app-favourite>
+    <app-recent-search  [searchTerm]="searchTerm" *ngIf="selected == 'RECENT SEARCH'"></app-recent-search>
+</div>

@@ -1,0 +1,17 @@
+<div *ngIf="cardDetails.length > 0">
+  <div class="count-fav">
+    <span style="width: 93%; display: inline-flex;">{{cardDetails.length}} City added as favourite</span>
+    <span (click)="clearAllItem()" style="cursor: pointer;">Remove all</span>
+  </div>
+  <div class="container-height container-scroll">
+    <div *ngFor="let crd of cardDetails | sortData:'recent': searchTerm" (click)="makeUnFavOrFav(crd)">
+      <app-list-card [crd]="crd"></app-list-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="cardDetails.length == 0">
+  <div class="container-height coninter-vertically-center">
+    <app-nothing-to-show [text]="'No Recent Search'"></app-nothing-to-show>
+  </div>
+</div>
