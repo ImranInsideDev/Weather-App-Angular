@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getSerachLocationWeather("Chennai");
+    this.getSerachLocationWeather("Chennai");
 
   }
 }
